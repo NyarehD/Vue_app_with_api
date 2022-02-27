@@ -9,6 +9,7 @@
   <router-view></router-view>
   <router-view name="detail"></router-view>
 </template>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

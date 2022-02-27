@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-6">
-        {{ $route.params.title }}
+        <img :src="" alt="">
       </div>
     </div>
   </div>
@@ -10,16 +10,7 @@
 
 <script>
 export default {
-  name: "DetailedNews",
-  data() {
-    return {
-      article: Object
-    }
-  },
-  mounted() {
-    this.store.dispatch("getPost")
-    this.article = this.$store.state.articles;
-  }
+  name: "DetailedNews"
 }
 </script>
 
