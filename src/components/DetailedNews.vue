@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-6">
+        {{ $route.params.title }}
       </div>
     </div>
   </div>

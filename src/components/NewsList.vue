@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "NewsCard",
+  name: "NewsList",
   props: {
     article: {
       type: Object,
