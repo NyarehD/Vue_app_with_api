@@ -7,7 +7,6 @@
     <router-link to="/news">News</router-link>
   </nav>
   <router-view></router-view>
-  <router-view name="detail"></router-view>
 </template>
 
 <style lang="scss">
