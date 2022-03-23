@@ -8,7 +8,14 @@
   </nav>
   <router-view></router-view>
 </template>
-
+<script>
+export default {
+  name: "App",
+  beforeMount() {
+    this.$store.state.articles.length === 0 && this.$store.dispatch("getPost")
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

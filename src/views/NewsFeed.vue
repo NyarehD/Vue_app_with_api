@@ -18,9 +18,6 @@ export default {
   data() {
     return {}
   },
-  mounted() {
-    this.$store.state.articles.length === 0 && this.$store.dispatch("getPost")
-  },
   computed: {
     storedArticles() {
       return this.$store.state.articles;
