@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import DetailedNews from "@/views/DetailedNews";
-import NewsFeed from "@/views/NewsFeed";
+import DetailedNews from "@/views/DetailedNews.vue";
+import NewsFeed from "@/views/NewsFeed.vue";
 import About from "@/views/AboutView.vue"
 
 const routes = [
@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/about',
         name: 'about',
-        component: About 
+        component: About
     },
     {
         path: '/news',
@@ -27,7 +27,8 @@ const routes = [
 ]
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    base: import.meta.env.BASE_URL
 })
 
 export default router
