@@ -1,13 +1,17 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
+    <div v-if="storedArticles.length<=0" class="row justify-content-center">
+      LOL Loading
+    </div>
+    <div v-else class="row justify-content-center">
       <news-card v-for="article in storedArticles" :key="article.url" :article="article"></news-card>
     </div>
   </div>
 </template>
 
 <script>
-import NewsCard from "@/components/NewsCards";
+import NewsCard from "@/components/NewsCards.vue"
+
 export default {
   name: "FeedList",
   components: {NewsCard},
@@ -25,6 +29,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.sudo-su {
+  color: red;
 
+  .auau {
+    color: red;
+  }
+
+}
 </style>
