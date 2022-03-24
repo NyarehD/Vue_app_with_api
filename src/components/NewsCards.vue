@@ -17,7 +17,7 @@
 <script>
 import router from "@/router"
 export default {
-  name: "NewsCards",
+  name: "NewsList",
   props: {
     article: {
       type: Object,

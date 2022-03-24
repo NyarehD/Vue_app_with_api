@@ -8,7 +8,7 @@ export default createStore({
         fetchStatus: {
             type: Boolean,
             required: true
-        }
+                           }
     },
     getters: {},
     mutations: {
@@ -34,3 +34,4 @@ export default createStore({
     },
     modules: {},
 })
+
