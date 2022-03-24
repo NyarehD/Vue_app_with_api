@@ -1,12 +1,37 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/about">About</router-link>
-    |
-    <router-link to="/news">News</router-link>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top">
+    <div class="container justify-content-between">
+      <router-link :to="{ name: 'home' }" class="navbar-brand">
+        <img src="@/assets/logo.png" alt="logo" class="logo" />
+        News
+      </router-link>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link :to="{ name: 'home' }" class="nav-link active">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'about' }" class="nav-link">About</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'news' }" class="nav-link">News</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
-  <router-view></router-view>
+  <router-view class="view"></router-view>
   <router-view name="detail"></router-view>
 </template>
 <script>
@@ -18,24 +43,13 @@ export default {
 }
 </script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+.navbar {
+  .logo {
+    height: 40px;
+    width: auto;
   }
+}
+.view{
+  margin-top: 75px;
 }
 </style>
