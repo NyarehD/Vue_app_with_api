@@ -22,7 +22,7 @@ export default createStore({
     },
     actions: {
         getPost({commit}) {
-            axios.get("https://newsapi.org/v2/top-headlines?q=Apple&from=2022-02-27&sortBy=popularity&apiKey=b04ad0967ac040f6af1753f437d4c3c8")
+            axios.get("https://newsapi.org/v2/top-headlines?category=technology&sortBy=popularity&pageSize=50&apiKey=b04ad0967ac040f6af1753f437d4c3c8")
                 .then(response => {
                     if (response.data.status === "ok") {
                         commit("SET_ARTICLES", response.data)
