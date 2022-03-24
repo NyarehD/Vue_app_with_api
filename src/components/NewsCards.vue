@@ -1,64 +1,34 @@
 <template>
-  <div class="article col-4 mb-3" @click="goToDetailedNews">
+  <div class="col-4 mb-3">
     <div class="card h-100">
-      <div class="parentDiv">
-        <div
-          class="childImage img-fluid h-100"
-          :style="{ backgroundImage: `url(${article.urlToImage}` }"
-        ></div>
-      </div>
+      <img :src="article.urlToImage" alt="..." class="card-img-top">
       <div class="card-body py-1 pb">
-        <p>{{ article.title }}</p>
+        <router-link :to="{name:'detailedNews',params:{title: article.title}}">{{ article.title }}</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import router from "@/router"
 export default {
   name: "NewsList",
   props: {
     article: {
       type: Object,
     },
-  },
-  methods: {
-    goToDetailedNews() {
-      router.push({ name: 'detailedNews', params: { title: this.article.title } })
-    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-div.article {
-  .parentDiv {
-    height: 300px;
-    overflow: hidden;
-    .childImage {
-      /*fallback color */
-      background-color: black;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: all 0.3s ease-in-out;
-    }
-  }
-  a {
-    text-decoration: none;
-    text-align: left;
-    color: rgb(0, 0, 0);
-  }
-  &:hover {
-    .parentDiv {
-      .childImage {
-        transform: scale(1.2);
-      }
-    }
-    a {
-      color: rgb(70, 70, 189);
-    }
-  }
+<style scoped>
+img {
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

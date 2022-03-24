@@ -1,5 +1,5 @@
 <template>
-  <div class="container-md">
+  <div class="container">
     <div v-if="storedArticles.length<=0" class="row justify-content-center">
       LOL Loading
     </div>
@@ -18,6 +18,9 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+    this.$store.state.articles.length === 0 && this.$store.dispatch("getPost")
+  },
   computed: {
     storedArticles() {
       return this.$store.state.articles;
@@ -27,4 +30,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.sudo-su {
+  color: red;
+
+  .auau {
+    color: red;
+  }
+
+}
 </style>
