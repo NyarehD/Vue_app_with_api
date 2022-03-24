@@ -1,8 +1,8 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import NewsList from "../views/NewsFeed";
-import DetailedNews from "@/components/DetailedNews";
-import NewsFeed from "@/views/NewsFeed";
+import { createRouter, createWebHistory } from 'vue-router'
+import About from '@/views/AboutView.vue';
+import HomeView from '@/views/HomeView.vue'
+import DetailedNews from "@/views/DetailedNews.vue";
+import NewsFeed from "@/views/NewsFeed.vue";
 
 const routes = [
     {
@@ -19,16 +19,12 @@ const routes = [
         path: '/news',
         name: 'news',
         component: NewsFeed,
-        children: [{
-            path: "some",
-            components: {
-                feed: NewsList
-            }
-        }, {
-            path: ":title",
-            component: DetailedNews
-        }]
     },
+    {
+        path: '/news/:title',
+        name: 'detailedNews',
+        component: DetailedNews
+    }
 
 ]
 const router = createRouter({
