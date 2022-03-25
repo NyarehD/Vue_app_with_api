@@ -22,7 +22,7 @@ export default {
   data() {
     return {}
   },
-  mounted() {
+  beforeMount() {
     if (!this.$store.state.articles) {
       this.$store.dispatch("getPost");
     }
