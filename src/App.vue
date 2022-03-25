@@ -23,13 +23,13 @@
       >
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link :to="{ name: 'home' }" :class="['nav-link',{'active':this.$route.name==='home'}]" @click="toggleNavbarStauts('home')">Home</router-link>
+            <router-link :to="{ name: 'home' }" :class="['nav-link',{'active':this.$route.name==='home'}]" @click="toggleNavbarStatus('home')">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'about' }" :class="['nav-link',{'active':this.$route.name==='about'}]">About</router-link>
+            <router-link :to="{ name: 'about' }" :class="['nav-link',{'active':this.$route.name==='about'}]" @click="toggleNavbarStatus('about')">About</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'news' }" :class="['nav-link',{'active':this.$route.name==='news'}]">News</router-link>
+            <router-link :to="{ name: 'news' }" :class="['nav-link',{'active':this.$route.name==='news'}]" @click="toggleNavbarStatus('news')">News</router-link>
           </li>
         </ul>
       </div>
