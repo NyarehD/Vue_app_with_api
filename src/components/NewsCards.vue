@@ -1,10 +1,10 @@
 <template>
-  <div class="article col-4 mb-3" @click="goToDetailedNews">
+  <div class="article col-lg-4 col-sm-6 mb-sm-3 mb-2" @click="goToDetailedNews">
     <div class="card h-100 shadow">
       <div class="parentDiv">
         <div
-          class="childImage img-fluid h-100"
-          :style="{ backgroundImage: `url(${article.urlToImage}` }"
+            class="childImage img-fluid h-100"
+            :style="{ backgroundImage: `url(${article.urlToImage}` }"
         ></div>
       </div>
       <div class="card-body py-1 pb">
@@ -16,6 +16,7 @@
 
 <script>
 import router from "@/router"
+
 export default {
   name: "NewsList",
   props: {
@@ -34,12 +35,12 @@ export default {
 <style lang="scss" scoped>
 div.article {
   .parentDiv {
-    height: 300px;
+    height: 18rem;
     overflow: hidden;
+
     .childImage {
       /*fallback color */
       background-image: url("../assets/logo.png");
-      background-color: black;
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -62,6 +63,14 @@ div.article {
     }
     a {
       color: rgb(70, 70, 189);
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  div.article {
+    .parentDiv {
+      height: 13rem;
     }
   }
 }
