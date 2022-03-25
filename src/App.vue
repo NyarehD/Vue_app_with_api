@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container justify-content-between">
       <router-link :to="{ name: 'home' }" class="navbar-brand">
         <img src="@/assets/logo.png" alt="logo" class="logo" />
@@ -13,19 +13,23 @@
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        @click="navbarStatus=!navbarStatus"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <div
+        :class="['collapse', 'navbar-collapse', 'justify-content-end', { 'show': navbarStatus }]"
+        id="navbarSupportedContent"
+      >
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link :to="{ name: 'home' }" class="nav-link active">Home</router-link>
+            <router-link :to="{ name: 'home' }" :class="['nav-link',{'active':this.$route.name==='home'}]" @click="toggleNavbarStauts('home')">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'about' }" class="nav-link">About</router-link>
+            <router-link :to="{ name: 'about' }" :class="['nav-link',{'active':this.$route.name==='about'}]">About</router-link>
           </li>
           <li class="nav-item">
-            <router-link :to="{ name: 'news' }" class="nav-link">News</router-link>
+            <router-link :to="{ name: 'news' }" :class="['nav-link',{'active':this.$route.name==='news'}]">News</router-link>
           </li>
         </ul>
       </div>
@@ -35,8 +39,20 @@
   <router-view name="detail"></router-view>
 </template>
 <script>
+import router from "./router";
 export default {
   name: "App",
+  data() {
+    return {
+      navbarStatus: false
+    }
+  },
+  methods: {
+    toggleNavbarStatus(to) {
+      this.navbarStatus = !this.navbarStatus;
+      router.push({ name: to })
+    }
+  },
   beforeMount() {
     this.$store.state.articles.length === 0 && this.$store.dispatch("getPost")
   }
@@ -49,7 +65,7 @@ export default {
     width: auto;
   }
 }
-.view{
+.view {
   margin-top: 75px;
 }
 </style>
