@@ -1,6 +1,6 @@
 <template>
   <div class="article col-4 mb-3" @click="goToDetailedNews">
-    <div class="card h-100">
+    <div class="card h-100 shadow">
       <div class="parentDiv">
         <div
           class="childImage img-fluid h-100"
@@ -38,6 +38,7 @@ div.article {
     overflow: hidden;
     .childImage {
       /*fallback color */
+      background-image: url("../assets/logo.png");
       background-color: black;
       background-size: cover;
       background-position: center;
@@ -50,10 +51,13 @@ div.article {
     text-align: left;
     color: rgb(0, 0, 0);
   }
-  &:hover {
+  .card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: all 0.2s;
     .parentDiv {
       .childImage {
-        transform: scale(1.2);
+        transform: scale(1.1);
       }
     }
     a {
