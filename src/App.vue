@@ -13,28 +13,37 @@
           data-bs-target="#navbarSupportedContent"
           data-bs-toggle="collapse"
           type="button"
-          @click="navbarStatus=true;navBarCollapsing=true"
+          @click="navbarStatus = true; navBarCollapsing = true"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div
           id="navbarSupportedContent"
-          :class="['navbar-collapse', 'justify-content-end', { 'show': navbarStatus ,'collapsing':navBarCollapsing,'collapse':navbarCollapse}]"
+          :class="['navbar-collapse', 'justify-content-end', { 'show': navbarStatus, 'collapsing': navBarCollapsing, 'collapse': navbarCollapse }]"
       >
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link :class="['nav-link',{'active':this.$route.name==='home'}]" :to="{ name: 'home' }"
-                         @click="toggleNavbarStatus('home')">Home
+            <router-link
+                :class="['nav-link', { 'active': this.$route.name === 'home' }]"
+                :to="{ name: 'home' }"
+                @click="toggleNavbarStatus('home')"
+            >Home
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link :class="['nav-link',{'active':this.$route.name==='about'}]" :to="{ name: 'about' }"
-                         @click="toggleNavbarStatus('about')">About
+            <router-link
+                :class="['nav-link', { 'active': this.$route.name === 'about' }]"
+                :to="{ name: 'about' }"
+                @click="toggleNavbarStatus('about')"
+            >About
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link :class="['nav-link',{'active':this.$route.name==='news'}]" :to="{ name: 'news' }"
-                         @click="toggleNavbarStatus('news')">News
+            <router-link
+                :class="['nav-link', { 'active': this.$route.name === 'news' }]"
+                :to="{ name: 'news' }"
+                @click="toggleNavbarStatus('news')"
+            >News
             </router-link>
           </li>
         </ul>
@@ -68,9 +77,6 @@ export default {
       router.push({name: to})
     }
   },
-  beforeMount() {
-    this.$store.state.articles.length === 0 && this.$store.dispatch("getPost")
-  }
 }
 </script>
 <style lang="scss">
