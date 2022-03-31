@@ -1,13 +1,16 @@
 <template>
   <div class="container-md">
-    <div v-if="storedArticles.length >= 0" class="row justify-content-center">
+    <div v-if="storedArticles.length > 0" class="row justify-content-center">
       <news-card v-for="article in storedArticles" :key="article.url" :article="article"></news-card>
+      <Waypoint class="col-lg-4 col-sm-6 mb-sm-3 mb-2 position-relative" @change="checkWaypoint">
+        <div class="flipping-3 position-absolute" style="top: 50%;right:50%">
+        </div>
+      </Waypoint>
     </div>
-    <Waypoint class="row justify-content-center loading" @change="getNews">
+    <div v-else class="position-absolute full-loading">
       <div class="flipping-3">
-
       </div>
-    </Waypoint>
+    </div>
   </div>
 </template>
 
@@ -27,31 +30,19 @@ export default {
     }
   },
   methods: {
-    getNews(waypointState) {
+    getNews() {
+      this.$store.dispatch("getPost", this.$store.state.articlePage)
+      this.$store.commit("SET_ARTICLE_PAGE")
+      console.log("Article page plus")
+    },
+    checkWaypoint(waypointState) {
       if (waypointState.going === "IN") {
-        this.$store.dispatch("getPost", this.$store.state.articlePage)
-        this.$store.commit("SET_ARTICLE_PAGE")
-        console.log("Article page plus")
+        this.getNews()
       }
     }
-    // scroll() {
-    //   window.onscroll = () => {
-    //     console.log("scrolling")
-    //     let scrollTo = document.querySelector(".loading")
-    //     if (scrollTo && this.isScrolledIntoView(scrollTo)) {
-    //       console.log("Run function")
-    //     }
-    //   }
-    // },
-    // isScrolledIntoView(el) {
-    //   let rect = el.getBoundingClientRect()
-    //   let elemTop = rect.top;
-    //   let elemBot = rect.bottom;
-    //   return elemTop < window.innerHeight && elemBot >= 0
-    // }
   },
   mounted() {
-    // this.scroll()
+    this.getNews();
   },
 
 }
@@ -85,5 +76,10 @@ export default {
   66.1%, 100% {
     background: #34495B
   }
+}
+
+.full-loading {
+  top: 50%;
+  right: 50%;
 }
 </style>
