@@ -22,12 +22,14 @@ export default createStore({
         }
     }, actions: {
         getPost({commit, state}) {
-            axios.get(`https://newsapi.org/v2/top-headlines?sortBy=popularity&pageSize=5&page=${state.articlePage}&language=en&apiKey=b04ad0967ac040f6af1753f437d4c3c8`)
+            let link = `https://newsapi.org/v2/top-headlines?sortBy=popularity&pageSize=5&page=${state.articlePage}&language=en&apiKey=b04ad0967ac040f6af1753f437d4c3c8`
+            axios.get(link)
                 .then(response => {
                     if (response.data.status === "ok") {
+                        console.log(response.data)
+                        console.log(this.state.articlePage)
                         commit("SET_ARTICLES", response.data)
                         commit("SET_STATUS", response.data.status)
-                        commit("SET_ARTICLE_PAGE")
                     } else {
                         commit("SET_STATUS", response.data.status)
                     }
