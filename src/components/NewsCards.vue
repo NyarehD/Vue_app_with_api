@@ -1,11 +1,8 @@
 <template>
   <div class="article col-lg-4 col-sm-6 mb-sm-3 mb-2" @click="goToDetailedNews">
     <div class="card h-100 shadow">
-      <div class="parentDiv">
-        <div
-            class="childImage img-fluid h-100"
-            :style="{ backgroundImage: `url(${article.urlToImage}` }"
-        ></div>
+      <div class="card-img-container">
+        <img :src="article.urlToImage?article.urlToImage:'../src/assets/logo.png'" class="card-img-top h-100">
       </div>
       <div class="card-body py-1 pb">
         <p>{{ article.title }}</p>
@@ -26,50 +23,48 @@ export default {
   },
   methods: {
     goToDetailedNews() {
-      router.push({ name: 'detailedNews', params: { title: this.article.title } })
-    }
-  }
+      router.push({name: 'detailedNews', params: {title: this.article.title}})
+    },
+  },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 div.article {
-  .parentDiv {
-    height: 18rem;
-    overflow: hidden;
+  .card {
+    .card-img-container {
+      height: 18rem;
+      position: relative;
 
-    .childImage {
-      /*fallback color */
-      background-image: url("../assets/logo.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: all 0.3s ease-in-out;
+      .card-img-top {
+        object-fit: cover;
+      }
     }
   }
-  a {
-    text-decoration: none;
-    text-align: left;
-    color: rgb(0, 0, 0);
-  }
+
   .card:hover {
     cursor: pointer;
     transform: scale(1.05);
     transition: all 0.2s;
-    .parentDiv {
-      .childImage {
+    overflow: hidden;
+
+    .card-img-container {
+      overflow: hidden;
+
+      .card-img-top {
         transform: scale(1.1);
+        transition: all 0.4s;
       }
     }
-    a {
+
+    p {
       color: rgb(70, 70, 189);
     }
   }
 }
-
 @media only screen and (max-width: 576px) {
   div.article {
-    .parentDiv {
+    .card-img-top {
       height: 13rem;
     }
   }
