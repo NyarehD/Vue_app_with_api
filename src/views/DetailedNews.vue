@@ -2,22 +2,17 @@
   <div class="container-md">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <router-link to="/news">News</router-link>
-            </li>
-            <li aria-current="page" class="breadcrumb-item active">{{ this.$route.params.title }}</li>
-          </ol>
-        </nav>
         <h2 class="text-start fw-bold">{{ currentArticle.title }}</h2>
-        <p>Source : {{ currentArticle.source.name }}</p>
+        <p class="mb-0">Source : {{ currentArticle.source.name }}</p>
         <p>By {{ currentArticle.author }} at {{ currentArticle.publishedAt }}</p>
       </div>
-
-      <img :src="currentArticle.urlToImage" alt="" class="w-100">
+      <div class="col-md-9">
+        <img :src="currentArticle.urlToImage" alt class="w-100"/>
+      </div>
       <div class="col-md-8">
-        <p class="text-start">{{ currentArticle.content }}<a :href="currentArticle.url" target="_blank">Read more</a>
+        <p class="text-start">
+          {{ currentArticle.content }}
+          <a :href="currentArticle.url" target="_blank">Read more</a>
         </p>
       </div>
     </div>
@@ -31,9 +26,10 @@ export default {
     return {}
   },
   beforeMount() {
-    if (!this.$store.state.articles) {
+    if (this.$store.state.articles.length === 0) {
       this.$store.dispatch("getPost");
     }
+    window.document.title = this.$route.params.title;
   },
   computed: {
     currentArticle() {
@@ -44,5 +40,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
