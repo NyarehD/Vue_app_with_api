@@ -33,9 +33,8 @@ const routes = [
     },
 ]
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/Vue_app_with_api/'),
     routes,
-    base: import.meta.env.BASE_URL
 })
 router.beforeEach((toRoute, fromRoute, next) => {
     next()
