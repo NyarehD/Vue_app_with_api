@@ -1,5 +1,6 @@
 <template>
   <div class="container-md">
+    <SearchNews></SearchNews>
     <div v-if="storedArticles.length > 0" class="row justify-content-center">
       <news-card v-for="article in storedArticles" :key="article.url" :article="article"></news-card>
       <Waypoint class="col-lg-4 col-sm-6 mb-sm-3 mb-2 position-relative" @change="checkWaypoint">
@@ -17,10 +18,11 @@
 <script>
 import NewsCard from "@/components/NewsCards.vue"
 import {Waypoint} from "vue-waypoint"
+import SearchNews from "@/components/SearchNews.vue";
 
 export default {
   name: "FeedList",
-  components: {NewsCard, Waypoint},
+  components: {SearchNews, NewsCard, Waypoint},
   data() {
     return {}
   },
@@ -33,7 +35,6 @@ export default {
     getNews() {
       this.$store.dispatch("getPost", this.$store.state.articlePage)
       this.$store.commit("SET_ARTICLE_PAGE")
-      console.log("Article page plus")
     },
     checkWaypoint(waypointState) {
       if (waypointState.going === "IN") {
@@ -48,7 +49,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .flipping-3 {
   width: 40px;
   height: 40px;
