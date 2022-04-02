@@ -1,8 +1,9 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import About from '@/views/AboutView.vue';
-import HomeView from '@/views/HomeView.vue'
-import DetailedNews from "@/views/DetailedNews.vue";
-import NewsFeed from "@/views/NewsFeed.vue";
+
+const AboutView = () => import("@/views/AboutView.vue")
+const HomeView = () => import("@/views/HomeView.vue")
+const DetailedNews = () => import("@/views/DetailedNews.vue")
+const NewsFeed = () => import("@/views/NewsFeed.vue")
 
 const routes = [
     {
@@ -13,7 +14,7 @@ const routes = [
     {
         path: '/about',
         name: 'about',
-        component: About,
+        component: AboutView,
         meta: {
             title: "About"
         }
